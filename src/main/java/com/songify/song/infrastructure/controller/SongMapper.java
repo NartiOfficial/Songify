@@ -10,6 +10,8 @@ import com.songify.song.infrastructure.controller.dto.response.GetAllSongsRespon
 import com.songify.song.infrastructure.controller.dto.response.GetSongResponseDto;
 import com.songify.song.infrastructure.controller.dto.response.PartiallyUpdateSongResponseDto;
 import com.songify.song.infrastructure.controller.dto.response.UpdateSongResponseDto;
+
+import java.util.List;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
 
@@ -47,7 +49,7 @@ public class SongMapper {
         return new GetSongResponseDto(song);
     }
 
-    public static GetAllSongsResponseDto mapFromSongToGetAllSongsResponseDto(Map<Integer, Song> database) {
+    public static GetAllSongsResponseDto mapFromSongToGetAllSongsResponseDto(List<Song> database) {
         return new GetAllSongsResponseDto(database);
     }
 }
