@@ -2,7 +2,6 @@ package com.songify.song.domain.service;
 
 import com.songify.song.domain.model.Song;
 import com.songify.song.domain.repository.SongRepository;
-import com.songify.song.domain.repository.SongRepositoryInMemory;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +11,7 @@ public class SongAdder {
 
     private final SongRepository songRepository;
 
-    SongAdder(SongRepositoryInMemory songRepository) {
+    SongAdder(SongRepository songRepository) {
         this.songRepository = songRepository;
     }
 

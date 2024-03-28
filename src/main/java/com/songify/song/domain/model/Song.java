@@ -11,13 +11,15 @@ import lombok.Setter;
 @Setter
 @Table(name = "song")
 public class Song {
-    @Column(nullable = false)
-    String name;
-    @Column(nullable = false)
-    String artist;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
+    String name;
+
+    @Column(nullable = false)
+    String artist;
 
     public Song() {
 
