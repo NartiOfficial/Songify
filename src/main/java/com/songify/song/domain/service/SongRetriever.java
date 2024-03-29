@@ -28,12 +28,8 @@ public class SongRetriever {
         return songRepository.findAll().stream().limit(limit).toList();
     }
 
-    public Optional<Song> findById(Long id) {
-        return songRepository.findSongById(id);
-    }
-
-    public void existsById(Long id){
-        findById(id)
+    public Song findById(Long id) {
+        return songRepository.findSongById(id)
                 .orElseThrow(() -> new SongNotFoundException("Song with id: " + id + " not found"));
     }
 }
