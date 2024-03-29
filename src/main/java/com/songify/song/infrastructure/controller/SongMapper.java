@@ -12,7 +12,7 @@ import com.songify.song.infrastructure.controller.dto.response.PartiallyUpdateSo
 import com.songify.song.infrastructure.controller.dto.response.UpdateSongResponseDto;
 
 import java.util.List;
-import java.util.Map;
+
 import org.springframework.http.HttpStatus;
 
 public class SongMapper {
@@ -33,7 +33,7 @@ public class SongMapper {
         return new CreateSongResponseDto(song);
     }
 
-    public static DeleteSongResponseDto mapFromSongToDeleteSongResponseDto(Integer id) {
+    public static DeleteSongResponseDto mapFromSongToDeleteSongResponseDto(Long id) {
         return new DeleteSongResponseDto("You deleted song with id: " + id, HttpStatus.OK);
     }
 
