@@ -32,4 +32,11 @@ public class SongRetriever {
         return songRepository.findSongById(id)
                 .orElseThrow(() -> new SongNotFoundException("Song with id: " + id + " not found"));
     }
+
+    public boolean existsById(Long id){
+        if(!songRepository.existsById(id)) {
+            throw new SongNotFoundException("Song with id: " + id + " not found");
+        }
+        return true;
+    }
 }
