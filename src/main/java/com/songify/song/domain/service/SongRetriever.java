@@ -20,7 +20,7 @@ public class SongRetriever {
     }
 
     public List<Song> findAll() {
-        log.info("retrieving all songs: ");
+        log.info("Retrieving all songs");
         return songRepository.findAll();
     }
 

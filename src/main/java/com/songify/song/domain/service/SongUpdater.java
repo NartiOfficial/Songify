@@ -19,6 +19,7 @@ public class SongUpdater {
 
 
     public void updateById(Long id, Song newSong) {
+        log.info("Updating song with id: " + id + " to new song: " + newSong.getArtist() + ", " + newSong.getName());
         songRepository.updateById(id, newSong);
     }
 }
