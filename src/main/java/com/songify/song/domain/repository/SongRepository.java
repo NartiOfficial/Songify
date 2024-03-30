@@ -9,17 +9,21 @@ import java.util.List;
 import java.util.Optional;
 
 public interface SongRepository extends Repository<Song, Long> {
-    Song save(Song song);
-
+    @Query("SELECT s FROM Song s")
     List<Song> findAll();
 
+    @Query("SELECT s FROM Song s WHERE s.id = :id")
     Optional<Song> findSongById(Long id);
 
+    @Modifying
+    @Query("DELETE FROM Song s WHERE s.id = :id")
     void deleteAllById(Long id);
 
     @Modifying
     @Query("UPDATE Song s SET s.name = :#{#newSong.name}, s.artist = :#{#newSong.artist} WHERE s.id = :id")
     void updateById(Long id, Song newSong);
+
+    Song save(Song song);
 
     boolean existsById(Long id);
 }
