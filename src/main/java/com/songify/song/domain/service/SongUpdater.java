@@ -42,4 +42,24 @@ public class SongUpdater {
         updateById(id, toSave);
         return toSave;
     }
+
+//              Dirty checking version
+//    public void updateById(Long id, Song newSong) {
+//        Song songById = songRetriever.findById(id);
+//        songById.setName(newSong.getName());
+//        songById.setArtist(newSong.getArtist());
+//        log.info("Updating song with id: " + id + " to new song: " + newSong.getArtist() + ", " + newSong.getName());
+//    }
+//
+//    public Song updatePartiallyById(Long id, Song songFromRequest) {
+//        Song songFromDatabase = songRetriever.findById(id);
+//        if (songFromRequest.getName() != null) {
+//            songFromDatabase.setName(songFromRequest.getName());
+//        }
+//        if (songFromRequest.getArtist() != null) {
+//            songFromDatabase.setArtist(songFromRequest.getArtist());
+//        }
+//        log.info("Updating song with id: " + id + " to new song: " + songFromRequest.getArtist() + ", " + songFromRequest.getName());
+//        return songFromDatabase;
+//    }
 }
