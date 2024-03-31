@@ -1,7 +1,6 @@
 package com.songify.song.infrastructure.controller;
 
 import com.songify.song.domain.model.Song;
-import com.songify.song.domain.model.SongNotFoundException;
 import com.songify.song.domain.service.SongAdder;
 import com.songify.song.domain.service.SongDeleter;
 import com.songify.song.domain.service.SongRetriever;
@@ -13,6 +12,7 @@ import com.songify.song.infrastructure.controller.dto.response.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,13 +30,8 @@ public class SongRestController {
     private final SongUpdater songUpdater;
 
     @GetMapping
-    public ResponseEntity<GetAllSongsResponseDto> getAllSongs(@RequestParam(required = false) Integer limit) {
-        List<Song> allSongs = songRetriever.findAll();
-        if (limit != null) {
-            List<Song> limitedMap = songRetriever.findAllLimitedBy(limit);
-            GetAllSongsResponseDto response = new GetAllSongsResponseDto(limitedMap);
-            return ResponseEntity.ok(response);
-        }
+    public ResponseEntity<GetAllSongsResponseDto> getAllSongs(Pageable pageable) {
+        List<Song> allSongs = songRetriever.findAll(pageable);
         GetAllSongsResponseDto response = SongMapper.mapFromSongToGetAllSongsResponseDto(allSongs);
         return ResponseEntity.ok(response);
     }
