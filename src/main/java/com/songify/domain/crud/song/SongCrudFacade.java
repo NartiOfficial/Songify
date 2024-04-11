@@ -28,8 +28,8 @@ public class SongCrudFacade {
 
     public void updateById(Long id, SongDto newSongDto) {
         songRetriever.existsById(id);
-//        Song songValidatedAndReadyToUpdate = new Song(newSongDto.name());
-//        songUpdater.updateById(id, songValidatedAndReadyToUpdate);
+        Song songValidatedAndReadyToUpdate = new Song(newSongDto.name());
+        songUpdater.updateById(id, songValidatedAndReadyToUpdate);
     }
 
     public SongDto updatePartiallyById(Long id, SongDto songFromRequest) {
@@ -49,15 +49,15 @@ public class SongCrudFacade {
 
     }
 
-//    public SongDto addSong(final SongDto songDto) {
-//        String name = songDto.name();
-//        Song vaidatedAndReadytoSaveSong = new Song(name);
-//        Song addedSong = songAdder.addSong(vaidatedAndReadytoSaveSong);
-//        return SongDto.builder()
-//                .id(addedSong.getId())
-//                .name(addedSong.getName())
-//                .build();
-//    }
+    public SongDto addSong(final SongDto songDto) {
+        String name = songDto.name();
+        Song vaidatedAndReadytoSaveSong = new Song(name);
+        Song addedSong = songAdder.addSong(vaidatedAndReadytoSaveSong);
+        return SongDto.builder()
+                .id(addedSong.getId())
+                .name(addedSong.getName())
+                .build();
+    }
 
     public void deleteById(Long id) {
         songRetriever.existsById(id);
