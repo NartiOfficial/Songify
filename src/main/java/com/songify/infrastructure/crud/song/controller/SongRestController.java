@@ -61,13 +61,13 @@ class SongRestController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping
-    ResponseEntity<CreateSongResponseDto> postSong(@RequestBody @Valid CreateSongRequestDto request) {
-        SongDto songDto = SongControllerMapper.mapFromCreateSongRequestDtoToSongDto(request);
-        SongDto savedSong = songFacade.addSong(songDto);
-        CreateSongResponseDto body = mapFromSongToCreateSongResponseDto(savedSong);
-        return ResponseEntity.ok(body);
-    }
+//    @PostMapping
+//    ResponseEntity<CreateSongResponseDto> postSong(@RequestBody @Valid CreateSongRequestDto request) {
+//        SongDto songDto = SongControllerMapper.mapFromCreateSongRequestDtoToSongDto(request);
+//        SongDto savedSong = songFacade.addSong(songDto);
+//        CreateSongResponseDto body = mapFromSongToCreateSongResponseDto(savedSong);
+//        return ResponseEntity.ok(body);
+//    }
 
     @DeleteMapping("/{id}")
     ResponseEntity<DeleteSongResponseDto> deleteSongByIdUsingPathVariable(@PathVariable Long id) {
