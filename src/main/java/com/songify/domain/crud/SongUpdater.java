@@ -1,4 +1,4 @@
-package com.songify.domain.crud.song;
+package com.songify.domain.crud;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

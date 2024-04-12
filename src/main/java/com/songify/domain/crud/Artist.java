@@ -1,4 +1,4 @@
-package com.songify.domain.crud.artist;
+package com.songify.domain.crud;
 
 import com.songify.domain.crud.util.BaseEntity;
 import jakarta.persistence.Column;
