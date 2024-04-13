@@ -17,7 +17,7 @@ class SongUpdater {
 
     void updateById(Long id, Song newSong) {
         songRetriever.existsById(id);
-        log.info("Updating song with id: " + id + " to new song: " + newSong.getArtist() + ", " + newSong.getName());
+        log.info("Updating song with id: " + id + " to new song: " + newSong.getName());
         songRepository.updateById(id, newSong);
     }
 
