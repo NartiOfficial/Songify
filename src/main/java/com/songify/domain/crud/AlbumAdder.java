@@ -25,4 +25,12 @@ class AlbumAdder {
         Album savedAlbum = albumRepository.save(album);
         return new AlbumDto(savedAlbum.getId(), savedAlbum.getTitle());
     }
+
+
+    Album addAlbum(final String title, final Instant instant) {
+        Album album = new Album();
+        album.setTitle(title);
+        album.setReleaseDate(instant);
+        return albumRepository.save(album);
+    }
 }
