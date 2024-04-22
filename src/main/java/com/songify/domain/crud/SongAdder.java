@@ -22,7 +22,7 @@ class SongAdder {
         SongLanguageDto language = songDto.language();
         SongLanguage songLanguage = SongLanguage.valueOf(language.name());
         Song song = new Song(songDto.name(), songDto.releaseDate(), songDto.duration(), songLanguage);
-        log.info("Adding new song: " + song);
+        log.info("Adding new song: {}", song);
         Song save = songRepository.save(song);
         return new SongDto(save.getId(), save.getName(), new GenreDto(save.getGenre().getId(), save.getGenre().getName()));
     }
