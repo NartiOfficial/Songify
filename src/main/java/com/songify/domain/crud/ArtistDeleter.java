@@ -21,7 +21,7 @@ class ArtistDeleter {
     void deleteArtistByIdWithAlbumsAndSongs(final Long artistId) {
         Artist artist = artistRetriever.findById(artistId);
         Set<Album> artistAlbums = albumRetriever.findAlbumsByArtistId(artist.getId());
-        if(artistAlbums.isEmpty()){
+        if (artistAlbums.isEmpty()) {
             log.info("Artist with id: " + artistId + " have 0 albums");
             artistRepository.deleteById(artistId);
             return;

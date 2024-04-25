@@ -58,7 +58,7 @@ class ArtistController {
     }
 
     @PatchMapping("/{artistId}")
-    ResponseEntity<ArtistDto> updateArtistNameById(@PathVariable Long artistId, @Valid @RequestBody ArtistUpdateRequestDto artistUpdateRequestDto){
+    ResponseEntity<ArtistDto> updateArtistNameById(@PathVariable Long artistId, @Valid @RequestBody ArtistUpdateRequestDto artistUpdateRequestDto) {
         ArtistDto artistDto = songifyCrudFacade.updateArtistNameById(artistId, artistUpdateRequestDto.newArtistName());
         return ResponseEntity.ok(artistDto);
     }
