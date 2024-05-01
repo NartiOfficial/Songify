@@ -84,4 +84,12 @@ class SongifyCrudFacadeTest {
         // Then
         assertThat(songifyCrudFacade.findAllArtists(Pageable.unpaged())).isEmpty();
     }
+
+    @Test
+    @DisplayName("")
+    public void a() {
+        // Given
+        // When
+        // Then
+    }
 }
