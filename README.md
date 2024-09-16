@@ -29,10 +29,20 @@ Songify is a music data management application that handles information about ar
 The program uses the "facade" design pattern to consolidate the functionalities of various services into a single interface. This makes managing music data simple and cohesive. All operations are executed within a transactional context, ensuring data integrity and safety.
 
 ## Technologies Used
-- Java
-- Spring Framework
-- Spring Data
-- Transaction Management (JPA)
+
+- **Java 17**
+- **Spring Boot 3.1.0** - Core framework
+- **Spring MVC** - Web framework
+- **Spring Data JPA** - Data persistence
+- **Spring Boot Starter Thymeleaf** - Server-side templating
+- **Hibernate** - ORM for data handling
+- **PostgreSQL** - Database
+- **Flyway** - Database migrations
+- **Lombok** - Boilerplate code reduction
+- **Springdoc OpenAPI** - Swagger integration for API documentation
+- **JUnit 5** - Testing framework
+- **AssertJ** - Fluent assertions for testing
+- **Maven** - Build and dependency management
 
 ## Getting Started
 
@@ -48,3 +58,12 @@ The program uses the "facade" design pattern to consolidate the functionalities 
     ```bash
     ./mvnw spring-boot:run
     ```
+
+## Future Improvements
+
+- **Enhance Testing:**
+  - Add integration tests to verify interactions between different components.
+  - Add unit tests to ensure individual components and methods function as expected.
+
+- **Introduce Spring Security:**
+  - Implement security features to manage authentication and authorization, securing access to various endpoints.
