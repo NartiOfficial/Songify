@@ -15,8 +15,6 @@ interface AlbumRepository extends Repository<Album, Long> {
 
     Album save(Album album);
 
-//    Optional<Album> findById(Long id);
-
     @Query("""
             select a from Album a
             join fetch a.songs songs
