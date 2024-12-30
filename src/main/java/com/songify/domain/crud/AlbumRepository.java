@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -34,4 +33,6 @@ interface AlbumRepository extends Repository<Album, Long> {
     int deleteByIdIn(Collection<Long> ids);
 
     Optional<Album> findById(Long id);
+
+    Set<Album> findAll();
 }

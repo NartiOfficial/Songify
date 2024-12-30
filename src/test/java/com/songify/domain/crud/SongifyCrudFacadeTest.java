@@ -164,8 +164,24 @@ class SongifyCrudFacadeTest {
     @DisplayName("Should add album with song")
     public void should_add_album_with_song(){
         // Given
+        SongRequestDto songRequestDto = SongRequestDto.builder()
+                .name("song")
+                .language(SongLanguageDto.ENGLISH)
+                .build();
+        SongDto songDto = songifyCrudFacade.addSong(songRequestDto);
+        AlbumRequestDto album = AlbumRequestDto
+                .builder()
+                .songId(songDto.id())
+                .title("album")
+                .build();
+        assertThat(songifyCrudFacade.findAllAlbums()).isEmpty();
         // When
+        AlbumDto albumDto = songifyCrudFacade.addAlbumWithSong(album);
         // Then
+        assertThat(songifyCrudFacade.findAllAlbums()).isNotEmpty();
+        AlbumInfo albumWithSong = songifyCrudFacade.findAlbumByIdWithArtistsAndSongs(albumDto.id());
+        Set<AlbumInfo.SongInfo> songs = albumWithSong.getSongs();
+        assertTrue(songs.stream().anyMatch(song -> song.getId().equals(songDto.id())));
     }
 
     @Test

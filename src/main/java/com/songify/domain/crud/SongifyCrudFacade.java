@@ -122,4 +122,8 @@ public class SongifyCrudFacade {
     public AlbumDto findAlbumById(final Long albumId) {
         return albumRetriever.findDtoById(albumId);
     }
+
+    Set<AlbumDto> findAllAlbums() {
+        return albumRetriever.findAllAlbums();
+    }
 }
