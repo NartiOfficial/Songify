@@ -13,6 +13,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -155,9 +156,14 @@ class SongifyCrudFacadeTest {
                 .name("song")
                 .language(SongLanguageDto.ENGLISH)
                 .build();
+        assertThat(songifyCrudFacade.findAllSongs(Pageable.unpaged())).isEmpty();
         // When
         SongDto songDto = songifyCrudFacade.addSong(song);
         // Then
+        List<SongDto> allSongs = songifyCrudFacade.findAllSongs(Pageable.unpaged());
+        assertThat(allSongs)
+                .extracting(SongDto::id)
+                .containsExactly(0L);
     }
 
     @Test
