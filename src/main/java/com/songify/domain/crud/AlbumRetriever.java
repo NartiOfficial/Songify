@@ -19,7 +19,7 @@ class AlbumRetriever {
                 .orElseThrow(() -> new AlbumNotFoundException("Album with id: " + id + " not found"));
     }
 
-    long countArtistByAlbumId(final Long id) {
+    long countArtistsByAlbumId(final Long id) {
         return findById(id).getArtists().size();
     }
 
