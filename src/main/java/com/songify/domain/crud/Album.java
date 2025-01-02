@@ -17,6 +17,7 @@ import lombok.Setter;
 
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -46,6 +47,10 @@ class Album extends BaseEntity {
 
     void addSong(final Song song) {
         songs.add(song);
+    }
+
+    void addSongsToAlbum(final Set<Song> songs) {
+        this.songs.addAll(songs);
     }
 
     void removeArtist(Artist artist) {

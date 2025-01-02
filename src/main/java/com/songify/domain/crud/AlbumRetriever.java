@@ -1,10 +1,7 @@
 package com.songify.domain.crud;
 
 import com.songify.domain.crud.dto.AlbumDto;
-import com.songify.domain.crud.dto.AlbumDtoWithArtistsAndSongs;
 import com.songify.domain.crud.dto.AlbumInfo;
-import com.songify.domain.crud.dto.ArtistDto;
-import com.songify.domain.crud.dto.SongDto;
 import com.songify.domain.crud.util.AlbumNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,8 +19,18 @@ class AlbumRetriever {
                 .orElseThrow(() -> new AlbumNotFoundException("Album with id: " + id + " not found"));
     }
 
+    long countArtistsByAlbumId(final Long id) {
+        return findById(id).getArtists().size();
+    }
+
     Set<Album> findAlbumsByArtistId(final Long artistId) {
         return albumRepository.findAllAlbumsByArtistId(artistId);
+    }
+
+    Set<AlbumDto> findAlbumsDtoByArtistId(final Long artistId) {
+        return findAlbumsByArtistId(artistId)
+                .stream().map(album -> new AlbumDto(album.getId(), album.getTitle())
+                ).collect(Collectors.toSet());
     }
 
     Album findById(final Long albumId) {
@@ -31,5 +38,19 @@ class AlbumRetriever {
                 .orElseThrow(
                         () -> new AlbumNotFoundException("Album with id: " + albumId + " not found")
                 );
+    }
+
+    AlbumDto findDtoById(final Long albumId) {
+        Album album = findById(albumId);
+        return new AlbumDto(
+                album.getId(),
+                album.getTitle()
+        );
+    }
+
+    Set<AlbumDto> findAllAlbums() {
+        return albumRepository.findAll()
+                .stream().map(album -> new AlbumDto(album.getId(), album.getTitle())
+                ).collect(Collectors.toSet());
     }
 }
