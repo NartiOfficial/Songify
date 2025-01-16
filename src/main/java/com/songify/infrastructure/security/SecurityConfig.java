@@ -11,21 +11,21 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 class SecurityConfig {
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        var manager = new InMemoryUserDetailsManager();
-        var user1 = User.withUsername("User")
-                .password("12345")
-                .roles("USER")
-                .build();
-        var user2 = User.withUsername("User2")
-                .password("12345")
-                .roles("USER", "ADMIN")
-                .build();
-        manager.createUser(user1);
-        manager.createUser(user2);
-        return manager;
-    }
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        var manager = new InMemoryUserDetailsManager();
+//        var user1 = User.withUsername("User")
+//                .password("12345")
+//                .roles("USER")
+//                .build();
+//        var user2 = User.withUsername("User2")
+//                .password("12345")
+//                .roles("USER", "ADMIN")
+//                .build();
+//        manager.createUser(user1);
+//        manager.createUser(user2);
+//        return manager;
+//    }
 
     @Bean
     PasswordEncoder passwordEncoder(){
