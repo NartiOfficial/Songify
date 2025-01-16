@@ -22,8 +22,12 @@ class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable);
         http.formLogin(Customizer.withDefaults());
         http.httpBasic(Customizer.withDefaults());
-        http.authorizeHttpRequests(authorizeRequests ->
-                authorizeRequests.anyRequest().authenticated());
+        http.authorizeHttpRequests(authorizeRequests -> authorizeRequests
+                .requestMatchers("/swagger-ui/**").permitAll()
+                .requestMatchers("/swagger-resources/**").permitAll()
+                .requestMatchers("/v3/api-docs/**").permitAll()
+                .requestMatchers("/auth/register/**").permitAll()
+                .anyRequest().authenticated());
         return http.build();
     }
 }
