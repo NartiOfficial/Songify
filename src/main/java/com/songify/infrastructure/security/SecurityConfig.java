@@ -2,6 +2,7 @@ package com.songify.infrastructure.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -27,6 +28,10 @@ class SecurityConfig {
                 .requestMatchers("/swagger-resources/**").permitAll()
                 .requestMatchers("/v3/api-docs/**").permitAll()
                 .requestMatchers("/auth/register/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/songs/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/artists/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/albums/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/genres/**").permitAll()
                 .anyRequest().authenticated());
         return http.build();
     }
